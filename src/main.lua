@@ -6,6 +6,7 @@
 
 ]]
 
+require "settings"
 local core = require("core.core")
 
 function love.load()

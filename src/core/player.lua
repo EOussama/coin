@@ -8,14 +8,14 @@
 
 local player = {
   x = 0,
-  y = 50,
+  y = 100,
   direction = 0,
   score = 0,
   velocity = 4
 }
 
 function player.update(dt)
-  if love.keyboard.isDown("up") and player.y > 0 then
+  if love.keyboard.isDown("up") and player.y > settings.ui.header.height then
     player.y = player.y - player.velocity
   end
 

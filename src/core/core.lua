@@ -20,6 +20,8 @@ function core.update(dt)
 end
 
 function core.draw()
+  love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), settings.ui.header.height)
+
   love.graphics.print("Score: " .. player.score)
 
   player:draw()
