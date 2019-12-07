@@ -14,6 +14,8 @@ local player = {
   score = 0,
   velocity = 2,
   direction = 0,
+  width = 50,
+  height = 50
 }
 
 
@@ -42,15 +44,15 @@ function player.update(self, dt)
   end
   
   -- Checking if the 'right' key is pressed
-  if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - global.ui.header.height then
+  if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
     self.x = self.x + self.velocity
-    if self.x > love.graphics.getWidth() - global.ui.header.height then self.x = love.graphics.getWidth() - global.ui.header.height end
+    if self.x > love.graphics.getWidth() then self.x = love.graphics.getWidth() end
   end
 
   -- Checking if the 'down' key is pressed
-  if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - global.ui.header.height then
+  if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - self.height then
     self.y = self.y + self.velocity
-    if self.y > love.graphics.getHeight() - global.ui.header.height then self.y = love.graphics.getHeight() - global.ui.header.height end
+    if self.y > love.graphics.getHeight() then self.y = love.graphics.getHeight() end
   end
 
   -- Checking if the 'left' key is pressed
@@ -70,8 +72,25 @@ function player.draw(self)
 
   -- Drawing the player
   UtilColor.rgba(62, 140, 67, 255, true)
-  love.graphics.rectangle("fill", self.x, self.y, 50, 50)
+  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
   UtilColor.restore()
 end
+
+
+
+--[[
+  @description Gets the collision object for the player entity
+  @param {Table} self: The table that invokes the function call
+]]
+function player.getCol(self)
+  return {
+    x = self.x,
+    y = self.y,
+    width = self.width,
+    height = self.height
+  }
+end
+
+
 
 return player

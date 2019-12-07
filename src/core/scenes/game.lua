@@ -6,8 +6,10 @@
 
 ]]
 
+local UtilText = require("core.utils.text")
 local UtilColor = require("core.utils.color")
 local UtilBackground = require("core.utils.background")
+local UtilCollision = require("core.utils.collision")
 
 local EntityPlayer = require("core.entities.player")
 local EntityCoin = require("core.entities.coins")
@@ -57,6 +59,16 @@ function game.update(self, dt)
 
   -- Issuing an update for the player entity
   EntityPlayer:update(dt)
+
+  -- Looping through all spawned coins
+  for i = #EntityCoin.coins, 1, -1 do
+
+    -- Checking  collision between the player and the spawned coins
+    if UtilCollision.check(EntityPlayer:getCol(), EntityCoin:getCol(i)) == true then
+      EntityCoin:remove(i)
+      EntityPlayer.score = EntityPlayer.score + 1
+    end
+  end
 end
 
 
@@ -75,11 +87,16 @@ function game.draw(self)
   love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), global.ui.header.height)
   UtilColor.restore()
 
+  -- Printing the player's score
+  UtilText.print("Score: " .. EntityPlayer.score, 20, 0, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+
   -- Drawing the coin
   EntityCoin:draw()
 
   -- Drawing the player
   EntityPlayer:draw()
 end
+
+
 
 return game

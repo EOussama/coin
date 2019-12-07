@@ -24,6 +24,11 @@ function coins.init(self)
   -- Seeding the random function
   math.randomseed(love.timer.getTime())
 
+  -- Initializing the coins' dimentions
+  coins.width = global.assets.gfx.entities.coin:getWidth()
+  coins.height = global.assets.gfx.entities.coin:getHeight()
+  coins.scale = 0.6
+
   -- Starting a coins timer
   UtilTimer:start("timer" .. love.timer.getTime(), 1000, true, self.spawn)
 end
@@ -44,6 +49,7 @@ function coins.spawn()
   -- Creating a coin
   coins:create(x, y)
 end
+
 
 
 --[[
@@ -71,6 +77,17 @@ end
 
 
 --[[
+  @description Removes a coin
+  @param {Table} self: The table that invokes the function call
+  @param {Number} index: The index of the coin to remove
+]]
+function coins.remove(self, index)
+  table.remove(self.coins, index)
+end
+
+
+
+--[[
   @description The coins' updating life-cycle event handler
   @param {Table} self: The table that invokes the function call
   @param {Number} dt: Delta time
@@ -86,9 +103,26 @@ function coins.update(self, dt) end
 function coins.draw(self)
   UtilColor.rgba(255, 213, 0, 255, true)
   for i = 1, #self.coins, 1 do
-    love.graphics.draw(global.assets.gfx.entities.coin, self.coins[i].x, self.coins[i].y, 0, 0.6, 0.6)
+    love.graphics.draw(global.assets.gfx.entities.coin, self.coins[i].x, self.coins[i].y, 0, self.scale, self.scale)
   end
   UtilColor.restore()
 end
+
+
+
+--[[
+  @description Gets the collision object for the coin entity
+  @param {Table} self: The table that invokes the function call
+]]
+function coins.getCol(self, index)
+  return {
+    x = self.coins[index].x,
+    y = self.coins[index].y,
+    width = self.width * self.scale,
+    height = self.height * self.scale
+  }
+end
+
+
 
 return coins

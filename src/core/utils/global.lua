@@ -9,7 +9,7 @@
 global = {
   ui = {
     header = {
-      height = 50
+      height = 60
     }
   },
   assets = {
