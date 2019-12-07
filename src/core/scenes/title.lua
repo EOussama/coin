@@ -43,10 +43,13 @@ function title.init(self, events)
   UtilAudio.play("ambient", "music", 0.2, true)
 
   -- Starting a timer for flickering
-  UtilTimer:start(200, true, flickerTimerEnded)
+  UtilTimer:start("flicker", 200, true, flickerTimerEnded)
+  UtilTimer:start("flicker1", 1000, true, abc)
 end
 
-
+function abc()
+  print("oussama")
+end
 
 --[[
   @description Title scene update

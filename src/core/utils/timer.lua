@@ -6,45 +6,79 @@
 
 ]]
 
-local timer = {
-  tick = 0,
-  time = 0,
-  loop = false,
-  started = false,
-  finished = false,
-  callback = function() end
-}
+local timers = {}
 
-function timer.start(self, time, loop, callback)
+function timers.start(self, name, time, loop, callback)
+  if name == nil then name = "" end
   if loop == nil then loop = false end
   if callback == nil then callback = function() end end
 
-  self.tick = 0
-  self.loop = loop
-  self.time = time
-  self.started = true
-  self.finished = false
-  self.callback = callback
+  if self:get(name) then
+    self:restart(name)
+  else
+    local timer = {
+      id = #self + 1,
+      name = name,
+      tick = 0,
+      loop = loop,
+      time = time,
+      started = true,
+      finished = false,
+      callback = callback
+    }
+  
+    table.insert(self, timer)
+  end
 end
 
-function timer.finish(self)
-  self.started = true
-  self.finished = true
-  self.callback()
+function timers.restart(self, name)
+  local timer = self:get(name)
+
+  timer.tick = 0
+  timer.started = true
+  timer.finished = false
 end
 
-function timer.update(self, dt)
-  if self.started == true and self.finished == false then
-    self.tick = self.tick + dt * 1000
+function timers.finish(self, name)
+  for i = 1, #self, 1 do
+    local timer = self[i]
 
-    if self.tick >= self.time then
-      self:finish()
+    if timer.name == name then
+      timer.started = true
+      timer.finished = true
+      timer.callback()
+    end
+  end
+end
 
-      if self.loop == true then
-        self:start(self.time, self.loop, self.callback)
+function timers.update(self, dt)
+  for i = 1, #self, 1 do
+    local timer = self[i]
+
+    if timer.started == true and timer.finished == false then
+      timer.tick = timer.tick + dt * 1000
+  
+      if timer.tick >= timer.time then
+        self:finish(timer.name)
+  
+        if timer.loop == true then
+          self:start(timer.name, timer.time, timer.loop, timer.callback)
+        end
       end
     end
   end
 end
 
-return timer
+function timers.get(self, name)
+  for i = 1, #self, 1 do
+    local timer = self[i]
+
+    if timer.name == name then
+      return timer
+    end
+  end
+
+  return nil
+end
+
+return timers
