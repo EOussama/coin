@@ -16,7 +16,8 @@ global = {
     gfx = {
       bg = {
         ground = nil
-      }
+      },
+      entities = { coin = nil }
     },
     sfx = {
       ambient = {

@@ -52,12 +52,17 @@ end
 ]]
 function coins.create(self, x, y)
 
+  local width = love.graphics.getWidth()
+  local height = love.graphics.getHeight()
+  local coinWidth = global.assets.gfx.entities.coin:getWidth()
+  local coinHeight = global.assets.gfx.entities.coin:getHeight()
+
   -- Sanitizing the input values
-  if x == nil or x < 10 then x = 10 end
-  if x > love.graphics.getWidth() - 10 then x = love.graphics.getWidth() - 10 end
-  if y == nil then y = 10 end
-  if y < global.ui.header.height then y = global.ui.header.height + 10 end
-  if y > love.graphics.getHeight() - 10 then y = love.graphics.getHeight() - 10 end
+  if x == nil or x < coinWidth then x = coinWidth end
+  if x > width - coinWidth then x = width - coinWidth end
+  if y == nil then y = coinHeight end
+  if y < global.ui.header.height then y = global.ui.header.height + coinHeight end
+  if y > height - coinHeight then y = height - coinHeight end
 
   -- Inserting the created coin into the coins collection
   table.insert(self.coins, { x = x, y = y })
@@ -81,7 +86,7 @@ function coins.update(self, dt) end
 function coins.draw(self)
   UtilColor.rgba(255, 213, 0, 255, true)
   for i = 1, #self.coins, 1 do
-    love.graphics.circle("fill", self.coins[i].x, self.coins[i].y, 10)
+    love.graphics.draw(global.assets.gfx.entities.coin, self.coins[i].x, self.coins[i].y, 0, 0.6, 0.6)
   end
   UtilColor.restore()
 end

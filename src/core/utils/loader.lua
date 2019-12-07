@@ -19,6 +19,7 @@ function loader.loadGFX()
   local gfxDir = "/assets/gfx/"
   
   global.assets.gfx.bg.ground = love.graphics.newImage(gfxDir .. "bg/ground.png")
+  global.assets.gfx.entities.coin = love.graphics.newImage(gfxDir .. "coin/coin.png")
 end
 
 function loader.loadSFX()
