@@ -6,6 +6,8 @@
 
 ]]
 
+local UtilLoader = require("core.utils.loader")
+
 local SceneTitle = require("core.scenes.title")
 local SceneGame = require("core.scenes.game")
 
@@ -14,10 +16,12 @@ local core = {
 }
 
 function core.init()
-  core.scene = SceneGame.name
+  UtilLoader:loadAssets()
 
   SceneTitle:init()
   SceneGame:init()
+
+  core.scene = SceneTitle.name
 end
 
 function core.update(dt)

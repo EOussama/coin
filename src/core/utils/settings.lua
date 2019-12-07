@@ -11,6 +11,11 @@ settings = {
     header = {
       height = 50
     }
+  },
+  assets = {
+    gfx = {},
+    sfx = {},
+    fonts = {}
   }
 }
 
