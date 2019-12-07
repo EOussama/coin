@@ -7,6 +7,7 @@
 ]]
 
 local UtilText = require("core.utils.text")
+local UtilAudio = require("core.utils.audio")
 
 local title = {
   id = 0,
@@ -20,6 +21,7 @@ local title = {
 
 function title.init(events)
   title.setActiveScene = events.setActiveScene
+  UtilAudio.play("ambient", "music", 0.2, true)
 end
 
 function title.update(dt)

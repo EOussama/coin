@@ -20,7 +20,9 @@ function loader.loadGFX()
 end
 
 function loader.loadSFX()
-  print("Loading SFX...")
+  local sfxDir = "/assets/sfx/"
+
+  global.assets.sfx.ambient.music = love.audio.newSource(sfxDir .. "ambient/music.wav", "static")
 end
 
 function loader.loadFonts()

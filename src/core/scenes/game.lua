@@ -34,7 +34,6 @@ function game.update(dt)
 end
 
 function game.draw()
-
   UtilColor.rgba(61, 61, 61, 255, true)
   love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), global.ui.header.height)
   UtilColor.restore()

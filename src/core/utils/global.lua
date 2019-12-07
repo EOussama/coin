@@ -14,8 +14,16 @@ global = {
   },
   assets = {
     gfx = {},
-    sfx = {},
-    fonts = {}
+    sfx = {
+      ambient = {
+        music = nil
+      }
+    },
+    fonts = {
+      small = nil,
+      large = nil,
+      huge = nil
+    }
   }
 }
 
