@@ -1,8 +1,8 @@
 --[[
 
-  @Author:        Eoussama
-  @Version:       v0.0.1
-  @Creation date:    6/12/2019 - 11:24PM
+  @Author:            Eoussama
+  @Version:           v0.0.1
+  @Creation date:     6/12/2019 - 11:24PM
 
 ]]
 
@@ -15,6 +15,9 @@ local core = {
 
 function core.init()
   core.scene = SceneGame.name
+
+  SceneTitle:init()
+  SceneGame:init()
 end
 
 function core.update(dt)

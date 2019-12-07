@@ -1,18 +1,30 @@
 --[[
 
-  @Author:        Eoussama
-  @Version:       v0.0.1
-  @Creation date:    6/12/2019 - 11:24PM
+  @Author:            Eoussama
+  @Version:           v0.0.1
+  @Creation date:     6/12/2019 - 11:24PM
 
 ]]
 
+local UtilColor = require("core.utils.color")
+
 local player = {
   x = 0,
-  y = 100,
-  direction = 0,
+  y = 0,
   score = 0,
-  velocity = 4
+  velocity = 0,
+  direction = 0,
 }
+
+function player.init()
+  player = {
+    x = 0,
+    y = 100,
+    score = 0,
+    velocity = 4,
+    direction = 0
+  }
+end
 
 function player.update(dt)
   if love.keyboard.isDown("up") and player.y > settings.ui.header.height then
@@ -33,11 +45,9 @@ function player.update(dt)
 end
 
 function player.draw()
-  love.graphics.print("X: " .. player.x, 0, 500)
-  love.graphics.print("Y: " .. player.y, 0, 520)
-  love.graphics.print("Width: " .. love.graphics.getWidth(), 0, 540)
-  love.graphics.print("Height: " .. love.graphics.getHeight(), 0, 560)
+  UtilColor.rgba(62, 140, 67, 255, true)
   love.graphics.rectangle("fill", player.x, player.y, 50, 50)
+  UtilColor.restore()
 end
 
 return player
