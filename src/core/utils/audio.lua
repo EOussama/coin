@@ -19,7 +19,7 @@ function audio.play(type, name, volume, loop)
   end
 end
 
-function audio.stop(name, type)
+function audio.stop(type, name)
   if (global.assets.sfx[type] ~= nil and global.assets.sfx[type][name] ~= nil) then
     global.assets.sfx[type][name]:stop()
   end

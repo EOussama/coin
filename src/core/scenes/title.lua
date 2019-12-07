@@ -29,6 +29,7 @@ end
 
 function love.keypressed(key)
   if key == 'space' and title.active == true then
+    UtilAudio.stop("ambient", "music")
     title.setActiveScene(1)
   end
 end
