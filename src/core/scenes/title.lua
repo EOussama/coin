@@ -9,6 +9,7 @@
 local UtilText = require("core.utils.text")
 local UtilAudio = require("core.utils.audio")
 local UtilTimer = require("core.utils.timer")
+local UtilBackground = require("core.utils.background")
 
 local title = {
   meta = {
@@ -79,14 +80,17 @@ end
 ]]
 function title.draw(self)
 
+  -- Tiling the background
+  UtilBackground.tile(global.assets.gfx.bg.ground, 0, 0, "cover")
+
   -- Printing 'Cöin' on the screen
-  UtilText.print("Cöin", "center", 150, { r = 245, g = 158, b = 27, a = 255, preserve = true }, { fnt = global.assets.fonts.huge, preserve = true })
+  UtilText.print("Cöin", "center", 200, { r = 252, g = 109, b = 25, a = 255, preserve = true }, { fnt = global.assets.fonts.huge, preserve = true })
   
   -- Checking the visibility of the flicker
   if self.store.flicker == true then
 
     -- Printing the starting message on the screen
-    UtilText.print("Press SPACE to start!", "center", 250, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+    UtilText.print("Press SPACE to start!", "center", 300, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
   end
 end
 

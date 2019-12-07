@@ -16,7 +16,9 @@ function loader.loadAssets()
 end
 
 function loader.loadGFX()
-  print("Loading GFX...")
+  local gfxDir = "/assets/gfx/"
+  
+  global.assets.gfx.bg.ground = love.graphics.newImage(gfxDir .. "bg/ground.png")
 end
 
 function loader.loadSFX()

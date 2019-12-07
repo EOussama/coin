@@ -13,7 +13,11 @@ global = {
     }
   },
   assets = {
-    gfx = {},
+    gfx = {
+      bg = {
+        ground = nil
+      }
+    },
     sfx = {
       ambient = {
         music = nil
