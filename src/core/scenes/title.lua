@@ -44,12 +44,9 @@ function title.init(self, events)
 
   -- Starting a timer for flickering
   UtilTimer:start("flicker", 200, true, flickerTimerEnded)
-  UtilTimer:start("flicker1", 1000, true, abc)
 end
 
-function abc()
-  print("oussama")
-end
+
 
 --[[
   @description Title scene update
