@@ -30,7 +30,7 @@ function scenes.draw()
   local activeScene = scenes.getActiveScene()
 
   if activeScene ~= nil then
-    activeScene:draw(dt)
+    activeScene:draw()
   end
 end
 
