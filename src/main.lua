@@ -7,16 +7,16 @@
 ]]
 
 require "settings"
-local core = require("core.core")
+local Core = require("core.core")
 
 function love.load()
-  core:init()
+  Core:init()
 end
 
 function love.update(dt)
-  core:update(dt)
+  Core:update(dt)
 end
 
 function love.draw()
-  core:draw()
+  Core:draw()
 end

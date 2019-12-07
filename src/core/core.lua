@@ -6,26 +6,31 @@
 
 ]]
 
-local player = require("core.player")
-local coins = require("core.coins")
+local SceneTitle = require("core.scenes.title")
+local SceneGame = require("core.scenes.game")
 
-local core = {}
+local core = {
+  scene = ''
+}
 
-function core.init ()
-  coins:create()
+function core.init()
+  core.scene = SceneGame.name
 end
 
 function core.update(dt)
-  player:update(dt)
+  if core.scene == "title" then
+    SceneTitle:update(dt)
+  elseif core.scene == "game" then
+    SceneGame:update(dt)
+  end
 end
 
 function core.draw()
-  love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), settings.ui.header.height)
-
-  love.graphics.print("Score: " .. player.score)
-
-  player:draw()
-  coins:draw()
+  if core.scene == "title" then
+    SceneTitle:draw()
+  elseif core.scene == "game" then
+    SceneGame:draw()
+  end
 end
 
 return core
