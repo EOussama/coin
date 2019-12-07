@@ -6,16 +6,16 @@
 
 ]]
 
-local player = require("core.player")
+local core = require("core.core")
 
 function love.load()
+  core:init()
 end
 
 function love.update(dt)
-  player:update(dt)
+  core:update(dt)
 end
 
 function love.draw()
-  love.graphics.print("Score: " .. player.score)
-  player:draw()
+  core:draw()
 end

@@ -1,9 +1,17 @@
+--[[
+
+  @Author:        Eoussama
+  @Version:       v0.0.1
+  @Creation date:    6/12/2019 - 11:24PM
+
+]]
+
 local player = {
   x = 0,
   y = 50,
   direction = 0,
   score = 0,
-  velocity = 15
+  velocity = 4
 }
 
 function player.update(dt)
