@@ -6,12 +6,7 @@
 
 ]]
 
-
-
--- Including the global table for game-wide state tracking
 require "core.utils.global"
-
--- Including the core of the game
 local Core = require("core.core")
 
 
