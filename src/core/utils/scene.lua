@@ -35,7 +35,6 @@ function scenes.draw()
 end
 
 function scenes.register(scene, default)
-  scene:init({ setActiveScene = scenes.setActiveScene })
   table.insert(scenes, scene)
 
   if default == true then
@@ -48,6 +47,7 @@ function scenes.setActiveScene(sceneId)
     local defScene = scenes.getDefaultScene()
 
     if defScene ~= nil then
+      defScene:init({ setActiveScene = scenes.setActiveScene })
       defScene.meta.active = true
     end
   else
@@ -55,6 +55,7 @@ function scenes.setActiveScene(sceneId)
       local tmpScene = scenes[i]
 
       if sceneId == tmpScene.meta.id then
+        tmpScene:init({ setActiveScene = scenes.setActiveScene })
         tmpScene.meta.active = true
       else
         tmpScene.meta.active = false
