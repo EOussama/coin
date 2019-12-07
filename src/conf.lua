@@ -12,11 +12,11 @@ function love.conf(t)
   -- t.console = true
 
   -- Game information
-  t.window.title = "Flappy Bird clone"
-  t.window.icon = "assets/drawables/icon.png"
+  t.window.title = "Cöin"
+  t.window.icon = "assets/gfx/coin/coin.png"
   t.window.display = 1
-  t.window.width = 400
-  t.window.height = 700
+  t.window.width = 800
+  t.window.height = 600
 
   -- Modules
   t.modules.joystick = false
