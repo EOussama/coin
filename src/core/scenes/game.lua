@@ -37,7 +37,7 @@ function game.init(self, events)
   self.setActiveScene = events.setActiveScene
 
   -- Creating a coin
-  EntityCoin:create()
+  EntityCoin:init()
 
   -- Initializing the player
   EntityPlayer:init()
