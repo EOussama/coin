@@ -7,37 +7,25 @@
 ]]
 
 local UtilLoader = require("core.utils.loader")
+local UtilScene = require("core.utils.scene")
 
 local SceneTitle = require("core.scenes.title")
 local SceneGame = require("core.scenes.game")
+local SceneGame = require("core.scenes.game")
 
-local core = {
-  scene = ''
-}
+local core = {}
 
 function core.init()
   UtilLoader:loadAssets()
-
-  SceneTitle:init()
-  SceneGame:init()
-
-  core.scene = SceneTitle.name
+  UtilScene:init()
 end
 
 function core.update(dt)
-  if core.scene == "title" then
-    SceneTitle:update(dt)
-  elseif core.scene == "game" then
-    SceneGame:update(dt)
-  end
+  UtilScene:update(dt)
 end
 
 function core.draw()
-  if core.scene == "title" then
-    SceneTitle:draw()
-  elseif core.scene == "game" then
-    SceneGame:draw()
-  end
+  UtilScene:draw()
 end
 
 return core

@@ -12,7 +12,10 @@ local EntityPlayer = require("core.entities.player")
 local EntityCoin = require("core.entities.coins")
 
 local game = {
-  name = "game"
+  id = 1,
+  name = "game",
+  active = false,
+  default = false
 }
 
 function game.init()
