@@ -23,19 +23,19 @@ local game = {
   }
 }
 
-function game.init(events)
+function game.init(self, events)
   EntityCoin:create()
   EntityPlayer:init()
 
-  game.setActiveScene = events.setActiveScene
+  self.setActiveScene = events.setActiveScene
 end
 
-function game.update(dt)
+function game.update(self, dt)
   EntityCoin:update(dt)
   EntityPlayer:update(dt)
 end
 
-function game.draw()
+function game.draw(self)
   UtilColor.rgba(61, 61, 61, 255, true)
   love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), global.ui.header.height)
   UtilColor.restore()

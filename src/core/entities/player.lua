@@ -26,7 +26,7 @@ function player.init()
   }
 end
 
-function player.update(dt)
+function player.update(self, dt)
   if love.keyboard.isDown("up") and player.y > global.ui.header.height then
     player.y = player.y - player.velocity
   end

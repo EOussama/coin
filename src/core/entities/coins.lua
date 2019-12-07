@@ -19,7 +19,7 @@ function coins.create()
   table.insert(coins, c)
 end
 
-function coins.update(dt)
+function coins.update(self, dt)
 end
 
 function coins.draw()

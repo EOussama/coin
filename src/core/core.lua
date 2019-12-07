@@ -20,7 +20,7 @@ function core.init()
   UtilScene:init()
 end
 
-function core.update(dt)
+function core.update(self, dt)
   UtilScene:update(dt)
 end
 

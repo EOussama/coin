@@ -18,7 +18,7 @@ function scenes.init()
   scenes.setActiveScene()
 end
 
-function scenes.update(dt)
+function scenes.update(self, dt)
   local activeScene = scenes.getActiveScene()
   
   if activeScene ~= nil then
@@ -35,7 +35,7 @@ function scenes.draw()
 end
 
 function scenes.register(scene, default)
-  scene.init({ setActiveScene = scenes.setActiveScene })
+  scene:init({ setActiveScene = scenes.setActiveScene })
   table.insert(scenes, scene)
 
   if default == true then
