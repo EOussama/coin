@@ -53,11 +53,7 @@ end
   @param {Table} self: The table that invokes the function call
   @param {Number} dt: Delta time
 ]]
-function title.update(self, dt)
-
-  -- Updating the timer
-  UtilTimer:update(dt)
-end
+function title.update(self, dt) end
 
 
 

@@ -8,6 +8,7 @@
 
 local UtilLoader = require("core.utils.loader")
 local UtilScene = require("core.utils.scene")
+local UtilTimer = require("core.utils.timer")
 
 local SceneTitle = require("core.scenes.title")
 local SceneGame = require("core.scenes.game")
@@ -21,6 +22,7 @@ function core.init()
 end
 
 function core.update(self, dt)
+  UtilTimer:update(dt)
   UtilScene:update(dt)
 end
 
