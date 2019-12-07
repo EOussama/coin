@@ -20,7 +20,7 @@ end
 
 function scenes.update(dt)
   local activeScene = scenes.getActiveScene()
-
+  
   if activeScene ~= nil then
     activeScene:update(dt)
   end
@@ -48,16 +48,16 @@ function scenes.setActiveScene(sceneId)
     local defScene = scenes.getDefaultScene()
 
     if defScene ~= nil then
-      defScene.active = true
+      defScene.meta.active = true
     end
   else
     for i = 1, #scenes, 1 do
       local tmpScene = scenes[i]
 
-      if sceneId == tmpScene.id then
-        tmpScene.active = true
+      if sceneId == tmpScene.meta.id then
+        tmpScene.meta.active = true
       else
-        tmpScene.active = false
+        tmpScene.meta.active = false
       end
     end
   end
@@ -67,7 +67,7 @@ function scenes.getActiveScene()
   for i = 1, #scenes, 1 do
     local scene = scenes[i]
 
-    if scene.active == true then
+    if scene.meta.active == true then
       return scene
     end
   end
@@ -79,10 +79,10 @@ function scenes.setDefaultScene(scene)
   for i = 1, #scenes, 1 do
     local tmpScene = scenes[i]
 
-    if scene.id == tmpScene.id then
-      tmpScene.default = true
+    if scene.meta.id == tmpScene.meta.id then
+      tmpScene.meta.default = true
     else
-      tmpScene.default = false
+      tmpScene.meta.default = false
     end
   end
 end
@@ -91,7 +91,7 @@ function scenes.getDefaultScene()
   for i = 1, #scenes, 1 do
     local scene = scenes[i]
 
-    if scene.default == true then
+    if scene.meta.default == true then
       return scene
     end
   end

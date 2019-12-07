@@ -10,10 +10,12 @@ local UtilText = require("core.utils.text")
 local UtilAudio = require("core.utils.audio")
 
 local title = {
-  id = 0,
-  name = "title",
-  active = false,
-  default = false,
+  meta = {
+    id = 0,
+    name = "title",
+    active = false,
+    default = false
+  },
   events = {
     setActiveScene = function() end
   }
@@ -28,8 +30,7 @@ function title.update(dt)
 end
 
 function love.keypressed(key)
-  if key == 'space' and title.active == true then
-    UtilAudio.stop("ambient", "music")
+  if key == 'space' and title.meta.active == true then
     title.setActiveScene(1)
   end
 end

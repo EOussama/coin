@@ -12,10 +12,12 @@ local EntityPlayer = require("core.entities.player")
 local EntityCoin = require("core.entities.coins")
 
 local game = {
-  id = 1,
-  name = "game",
-  active = false,
-  default = false,
+  meta = {
+    id = 1,
+    name = "game",
+    active = false,
+    default = false
+  },
   events = {
     setActiveScene = function() end
   }
