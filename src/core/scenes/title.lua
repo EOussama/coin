@@ -12,10 +12,14 @@ local title = {
   id = 0,
   name = "title",
   active = false,
-  default = false
+  default = false,
+  events = {
+    setActiveScene = function() end
+  }
 }
 
-function title.init()
+function title.init(events)
+  title.setActiveScene = events.setActiveScene
 end
 
 function title.update(dt)
@@ -23,7 +27,7 @@ end
 
 function love.keypressed(key)
   if key == 'space' and title.active == true then
-    print("Input: " .. key)
+    title.setActiveScene(1)
   end
 end
 

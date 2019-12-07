@@ -35,7 +35,7 @@ function scenes.draw()
 end
 
 function scenes.register(scene, default)
-  scene:init()
+  scene.init({ setActiveScene = scenes.setActiveScene })
   table.insert(scenes, scene)
 
   if default == true then

@@ -15,12 +15,17 @@ local game = {
   id = 1,
   name = "game",
   active = false,
-  default = false
+  default = false,
+  events = {
+    setActiveScene = function() end
+  }
 }
 
-function game.init()
+function game.init(events)
   EntityCoin:create()
   EntityPlayer:init()
+
+  game.setActiveScene = events.setActiveScene
 end
 
 function game.update(dt)
