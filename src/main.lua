@@ -6,7 +6,7 @@
 
 ]]
 
-require "core.utils.settings"
+require "core.utils.global"
 local Core = require("core.core")
 
 function love.load()

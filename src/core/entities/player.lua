@@ -27,7 +27,7 @@ function player.init()
 end
 
 function player.update(dt)
-  if love.keyboard.isDown("up") and player.y > settings.ui.header.height then
+  if love.keyboard.isDown("up") and player.y > global.ui.header.height then
     player.y = player.y - player.velocity
   end
 

@@ -6,7 +6,7 @@
 
 ]]
 
-settings = {
+global = {
   ui = {
     header = {
       height = 50
@@ -19,4 +19,4 @@ settings = {
   }
 }
 
-return settings
+return global

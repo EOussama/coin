@@ -6,7 +6,7 @@
 
 ]]
 
-local UtilFont = require("core.utils.font")
+local UtilText = require("core.utils.text")
 
 local title = {
   name = "title"
@@ -19,9 +19,8 @@ function title.update(dt)
 end
 
 function title.draw()
-  UtilFont.set(settings.assets.fonts.huge, true)
-  love.graphics.print("Title screen", 0, 0)
-  UtilFont.restore()
+  UtilText.print("Cöin", "center", 150, { r = 245, g = 158, b = 27, a = 255, preserve = true }, { fnt = global.assets.fonts.huge, preserve = true })
+  UtilText.print("Press any key to start!", "center", 250, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
 end
 
 return title

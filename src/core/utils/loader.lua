@@ -26,7 +26,7 @@ end
 function loader.loadFonts()
   local fontsDir = "/assets/fonts/"
 
-  settings.assets.fonts = {
+  global.assets.fonts = {
     small = love.graphics.newFont(fontsDir .. "Gamer.ttf", 30),
     large = love.graphics.newFont(fontsDir .. "Gamer.ttf", 60),
     huge = love.graphics.newFont(fontsDir .. "Gamer.ttf", 120)
