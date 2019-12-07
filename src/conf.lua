@@ -8,7 +8,7 @@
 
 function love.conf(t)
   -- Love2D configuration
-  t.version = '11.0'
+  t.version = '11.0' 
 
   -- Game information
   t.window.title = "Cöin"
