@@ -7,6 +7,7 @@
 ]]
 
 local UtilColor = require("core.utils.color")
+local UtilBackground = require("core.utils.background")
 
 local EntityPlayer = require("core.entities.player")
 local EntityCoin = require("core.entities.coins")
@@ -65,8 +66,12 @@ end
 ]]
 function game.draw(self)
 
+  -- Tiling the background
+  UtilBackground.tile(global.assets.gfx.bg.ground, 0, 0, "cover")
+  
   -- Drawing the header
-  UtilColor.rgba(61, 61, 61, 255, true)
+  -- UtilColor.rgba(61, 61, 61, 255, true)
+  UtilColor.rgba(0, 0, 0, 80, true)
   love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), global.ui.header.height)
   UtilColor.restore()
 
