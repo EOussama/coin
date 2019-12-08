@@ -41,8 +41,8 @@ function title.init(self, events)
   self.setActiveScene = events.setActiveScene
 
   -- Playing ambient music
-  UtilAudio.play("ambient", "music", 0.2, true)
-
+  UtilAudio:play("ambient", "music", 0.2, true)
+  
   -- Starting a timer for flickering
   UtilTimer:start("flicker", 200, true, flickerTimerEnded)
 end

@@ -25,7 +25,8 @@ end
 function loader.loadSFX()
   local sfxDir = "/assets/sfx/"
 
-  global.assets.sfx.ambient.music = love.audio.newSource(sfxDir .. "ambient/music.wav", "static")
+  global.assets.sfx.ambient.music = love.audio.newSource(sfxDir .. "ambient/music.wav", "stream")
+  global.assets.sfx.effects.coin = love.audio.newSource(sfxDir .. "effects/coin.ogg", "static")
 end
 
 function loader.loadFonts()

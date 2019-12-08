@@ -8,9 +8,7 @@
 
 global = {
   ui = {
-    header = {
-      height = 60
-    }
+    header = { height = 60 }
   },
   assets = {
     gfx = {
@@ -20,9 +18,8 @@ global = {
       entities = { coin = nil }
     },
     sfx = {
-      ambient = {
-        music = nil
-      }
+      ambient = { music = nil },
+      effects = { coin = nil }
     },
     fonts = {
       small = nil,

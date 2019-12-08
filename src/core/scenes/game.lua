@@ -6,6 +6,7 @@
 
 ]]
 
+local UtilAudio = require("core.utils.audio")
 local UtilText = require("core.utils.text")
 local UtilColor = require("core.utils.color")
 local UtilBackground = require("core.utils.background")
@@ -65,8 +66,7 @@ function game.update(self, dt)
 
     -- Checking  collision between the player and the spawned coins
     if UtilCollision.check(EntityPlayer:getCol(), EntityCoin:getCol(i)) == true then
-      EntityCoin:remove(i)
-      EntityPlayer.score = EntityPlayer.score + 1
+      self:collectCoin(i)
     end
   end
 end
@@ -95,6 +95,25 @@ function game.draw(self)
 
   -- Drawing the player
   EntityPlayer:draw()
+end
+
+
+
+--[[
+  @description Collects a collated coin
+  @param {Table} self: The table that invokes the function call
+  @param {Number} index: The index of the coin to collect
+]]
+function game.collectCoin(self, index)
+
+  -- Removing the collected coin
+  EntityCoin:remove(index)
+
+  -- Increasing the player' score
+  EntityPlayer.score = EntityPlayer.score + 1
+
+  -- Playing a complementory sound effect
+  UtilAudio:play("effects", "coin")
 end
 
 
