@@ -1,3 +1,3 @@
-# Coin
+# Cöin
 
-Race against time and gather as much coins as you can.
+Race against time and gather as much cöins as you can.

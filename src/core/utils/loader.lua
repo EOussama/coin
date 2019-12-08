@@ -43,8 +43,12 @@ end
     global.assets.gfx.entities.coin = love.graphics.newImage(gfxDir .. "coin/coin.png")
     
     -- Loading the player assets
-    
-    
+    global.assets.gfx.entities.player = {
+      up = love.graphics.newImage(gfxDir .. "player/up.png"),
+      right = love.graphics.newImage(gfxDir .. "player/right.png"),
+      down = love.graphics.newImage(gfxDir .. "player/down.png"),
+      left = love.graphics.newImage(gfxDir .. "player/left.png")
+    }
   end
   
   

@@ -13,7 +13,7 @@ local player = {
   y = 100,
   score = 0,
   velocity = 2,
-  direction = 0,
+  direction = "down",
   width = 50,
   height = 50
 }
@@ -40,24 +40,28 @@ function player.update(self, dt)
   -- Checking if the 'up' key is pressed
   if love.keyboard.isDown("up") and self.y > global.ui.header.height then
     self.y = self.y - self.velocity
+    self.direction = "up"
     if self.y < global.ui.header.height then self.y = global.ui.header.height end
   end
   
   -- Checking if the 'right' key is pressed
   if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
     self.x = self.x + self.velocity
+    self.direction = "right"
     if self.x > love.graphics.getWidth() then self.x = love.graphics.getWidth() end
   end
 
   -- Checking if the 'down' key is pressed
   if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - self.height then
     self.y = self.y + self.velocity
+    self.direction = "down"
     if self.y > love.graphics.getHeight() then self.y = love.graphics.getHeight() end
   end
 
   -- Checking if the 'left' key is pressed
   if love.keyboard.isDown("left") and self.x > 0 then
     self.x = self.x - self.velocity
+    self.direction = "left"
     if self.x < 0 then self.x = 0 end
   end
 end
@@ -72,7 +76,8 @@ function player.draw(self)
 
   -- Drawing the player
   UtilColor.rgba(62, 140, 67, 255, true)
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  -- love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  love.graphics.draw(global.assets.gfx.entities.player[self.direction], self.x, self.y)
   UtilColor.restore()
 end
 
