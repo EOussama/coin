@@ -7,6 +7,7 @@
 ]]
 
 local UtilColor = require("core.utils.color")
+local UtilAnimation = require("core.utils.animation")
 
 local player = {
   x = 0,
@@ -15,7 +16,8 @@ local player = {
   velocity = 2,
   direction = "down",
   width = 50,
-  height = 50
+  height = 50,
+  sprite = nil
 }
 
 
@@ -27,6 +29,8 @@ local player = {
 function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
+
+  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down)
 end
 
 
@@ -41,6 +45,8 @@ function player.update(self, dt)
   if love.keyboard.isDown("up") and self.y > global.ui.header.height then
     self.y = self.y - self.velocity
     self.direction = "up"
+    self.sprite:animate()
+    
     if self.y < global.ui.header.height then self.y = global.ui.header.height end
   end
   
@@ -48,6 +54,8 @@ function player.update(self, dt)
   if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
     self.x = self.x + self.velocity
     self.direction = "right"
+    self.sprite:animate()
+    
     if self.x > love.graphics.getWidth() then self.x = love.graphics.getWidth() end
   end
 
@@ -55,6 +63,8 @@ function player.update(self, dt)
   if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - self.height then
     self.y = self.y + self.velocity
     self.direction = "down"
+    self.sprite:animate()
+    
     if self.y > love.graphics.getHeight() then self.y = love.graphics.getHeight() end
   end
 
@@ -62,6 +72,8 @@ function player.update(self, dt)
   if love.keyboard.isDown("left") and self.x > 0 then
     self.x = self.x - self.velocity
     self.direction = "left"
+    self.sprite:animate()
+
     if self.x < 0 then self.x = 0 end
   end
 end
@@ -78,6 +90,7 @@ function player.draw(self)
   UtilColor.rgba(62, 140, 67, 255, true)
   -- love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
   love.graphics.draw(global.assets.gfx.entities.player[self.direction], self.x, self.y)
+  
   UtilColor.restore()
 end
 

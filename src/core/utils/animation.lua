@@ -13,8 +13,19 @@ local animation = {}
 --[[
   @description Creates an animation table
 ]]
-function animation:create(image)
-  local anim = {}
+function animation:create(image, x, y, width, height, speed)
+  local anim = {
+    spriteSheet = image,
+    quad = {},
+    x = x or 0,
+    y = y or 0,
+    width = width or image:getWidth(),
+    height = height or image:getHeight(),
+    speed = speed or 500
+  }
+
+  function anim:animate()
+  end
 
   return anim
 end
