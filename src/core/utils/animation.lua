@@ -11,10 +11,12 @@ local animation = {}
 
 
 --[[
-  @description Animates the input sprite sheet
+  @description Creates an animation table
 ]]
-function animation.animate(image)
-  
+function animation:create(image)
+  local anim = {}
+
+  return anim
 end
 
 
