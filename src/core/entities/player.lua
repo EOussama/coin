@@ -30,7 +30,7 @@ function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
 
-  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down)
+  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down, 0, 0, 50, 128)
 end
 
 
