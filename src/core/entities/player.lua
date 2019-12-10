@@ -29,6 +29,8 @@ local player = {
 function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
+
+  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down, 0, 0, 100, 128, 4)
 end
 
 
@@ -38,6 +40,8 @@ end
   @param {Table} self: The table that invokes the function call
 ]]
 function player.update(self, dt)
+
+  player.sprite:update(dt)
 
   -- Checking if the 'up' key is pressed
   if love.keyboard.isDown("up") and self.y > global.ui.header.height then
@@ -83,6 +87,7 @@ function player.draw(self)
   -- Drawing the player
   UtilColor.rgba(62, 140, 67, 255, true)
   love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  player.sprite:getQuad()
   UtilColor.restore()
 end
 
