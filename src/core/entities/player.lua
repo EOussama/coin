@@ -30,7 +30,7 @@ function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
 
-  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down, 0, 0, 100, 128, 4)
+  player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down, 0, 0, 128, 128, 4, 150, 0.5)
 end
 
 
@@ -41,12 +41,13 @@ end
 ]]
 function player.update(self, dt)
 
-  player.sprite:update(dt)
-
   -- Checking if the 'up' key is pressed
   if love.keyboard.isDown("up") and self.y > global.ui.header.height then
     self.y = self.y - self.velocity
     self.direction = "up"
+
+    player.sprite:update(dt)
+    player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
     
     if self.y < global.ui.header.height then self.y = global.ui.header.height end
   end
@@ -55,6 +56,9 @@ function player.update(self, dt)
   if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
     self.x = self.x + self.velocity
     self.direction = "right"
+
+    player.sprite:update(dt)
+    player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
     
     if self.x > love.graphics.getWidth() then self.x = love.graphics.getWidth() end
   end
@@ -63,6 +67,9 @@ function player.update(self, dt)
   if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - self.height then
     self.y = self.y + self.velocity
     self.direction = "down"
+
+    player.sprite:update(dt)
+    player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
     
     if self.y > love.graphics.getHeight() then self.y = love.graphics.getHeight() end
   end
@@ -71,6 +78,9 @@ function player.update(self, dt)
   if love.keyboard.isDown("left") and self.x > 0 then
     self.x = self.x - self.velocity
     self.direction = "left"
+
+    player.sprite:update(dt)
+    player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
 
     if self.x < 0 then self.x = 0 end
   end
@@ -85,10 +95,7 @@ end
 function player.draw(self)
 
   -- Drawing the player
-  UtilColor.rgba(62, 140, 67, 255, true)
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
-  player.sprite:getQuad()
-  UtilColor.restore()
+  player.sprite:animate(self.x, self.y)
 end
 
 
