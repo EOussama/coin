@@ -22,12 +22,16 @@ function core.init()
 end
 
 function core.update(self, dt)
-  UtilTimer:update(dt)
-  UtilScene:update(dt)
+  if global.paused == false then
+    UtilTimer:update(dt)
+    UtilScene:update(dt)
+  end
 end
 
 function core.draw()
-  UtilScene:draw()
+  if global.paused == false then
+    UtilScene:draw()
+  end
 end
 
 return core
