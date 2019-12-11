@@ -54,18 +54,10 @@ end
   @param {Table} self: The table that invokes the function call
   @param {Number} dt: Delta time
 ]]
-function title.update(self, dt) end
-
-
-
---[[
-  @description Global keyboard input listener
-  @param {String} key: The pressed key
-]]
-function love.keypressed(key)
+function title.update(self, dt)
 
   -- Checking of the 'space' key was pressed
-  if key == 'space' and title.meta.active == true then
+  if love.keyboard.isDown('space') and title.meta.active == true then
 
     -- Navigating to the 'game' scene
     title.setActiveScene(1)
