@@ -22,15 +22,18 @@ function core.init()
 end
 
 function core.update(self, dt)
-  if global.paused == false then
-    UtilTimer:update(dt)
-    UtilScene:update(dt)
-  end
+  UtilTimer:update(dt)
+  UtilScene:update(dt)
 end
 
 function core.draw()
-  if global.paused == false then
-    UtilScene:draw()
+  UtilScene:draw()
+end
+
+function love.keypressed(key)
+  if key == 'p' then
+    global.paused = not global.paused
+    print(global.paused)
   end
 end
 

@@ -40,14 +40,18 @@ end
 ]]
 function coins.spawn()
 
-  -- Calculating a random x position
-  local x = math.random(love.graphics.getWidth(), 0)
+  -- Checking if the game is not paused
+  if global.paused == false then
 
-  -- Calculating a random y position
-  local y = math.random(0, love.graphics.getHeight())
-
-  -- Creating a coin
-  coins:create(x, y)
+    -- Calculating a random x position
+    local x = math.random(love.graphics.getWidth(), 0)
+  
+    -- Calculating a random y position
+    local y = math.random(0, love.graphics.getHeight())
+  
+    -- Creating a coin
+    coins:create(x, y)
+  end
 end
 
 
