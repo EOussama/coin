@@ -105,7 +105,7 @@ function game.draw(self)
 
   -- Printing the pausing state
   if global.paused == true and self.store.flicker == true then
-    UtilText.print("Game Paused", "center", 220, { r = 255, g = 255, b = 255, a = 255, preserve = true }, { fnt = global.assets.fonts.huge, preserve = true })
+    UtilText.print("Game Paused", "center", "center", { r = 255, g = 255, b = 255, a = 255, preserve = true }, { fnt = global.assets.fonts.large, preserve = true })
     UtilText.print("Press 'P' to resume the game!", "center", 330, { r = 255, g = 255, b = 255, a = 255, preserve = true }, { fnt = global.assets.fonts.small, preserve = true })
   end
 end
