@@ -104,12 +104,8 @@ function game.draw(self)
   EntityPlayer:draw()
 
   -- Printing the pausing state
-  if global.paused == true then
-    love.graphics.setColor(0.252, 0.186, 0.03)
-
-    if self.store.flicker == true then
-      UtilText.print("Game Paused", "right", "up", { r = 252, g = 186, b = 3, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
-    end
+  if global.paused == true and self.store.flicker == true then
+    UtilText.print("Game Paused", "right", "up", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
   end
 end
 

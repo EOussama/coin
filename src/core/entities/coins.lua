@@ -68,7 +68,7 @@ function coins.create(self, x, y)
   local coinHeight = global.assets.gfx.entities.coin:getHeight()
 
   -- Sanitizing the input values
-  if x == nil or x < coinWidth then x = coinWidth end
+  if x == nil then x = coinWidth end
   if x > width - coinWidth then x = width - coinWidth end
   if y == nil then y = coinHeight end
   if y < global.ui.header.height then y = global.ui.header.height + coinHeight end
