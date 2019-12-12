@@ -88,7 +88,12 @@ function game.draw(self)
   UtilColor.restore()
 
   -- Printing the player's score
-  UtilText.print("Score: " .. EntityPlayer.score, 20, 0, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+  UtilText.print("Score: " .. EntityPlayer.score, "left", 0, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+
+  -- Printing the pausing state
+  if global.paused == true then
+    UtilText.print("Game Paused", "left", "down", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+  end
 
   -- Drawing the coin
   EntityCoin:draw()

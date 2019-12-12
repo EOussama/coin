@@ -18,12 +18,20 @@ function text.print(txt, x, y, color, font)
   if type(x) == "string" then
     if x == "center" then
       x = love.graphics.getWidth() / 2 - font.fnt:getWidth(txt) / 2
+    elseif x == "right" then
+      x = love.graphics.getWidth() - font.fnt:getWidth(txt) - 20
+    elseif x == "left" then
+      x = 20
     end
   end
 
   if type(y) == "string" then
     if y == "center" then
       y = love.graphics.getHeight() / 2 - font.fnt:getHeight(txt) / 2
+    elseif y == "down" then
+      y = love.graphics.getHeight() - font.fnt:getHeight(txt) - 5
+    elseif y == "up" then
+      y = 0
     end
   end
 
