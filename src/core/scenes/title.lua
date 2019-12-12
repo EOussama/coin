@@ -23,8 +23,7 @@ local title = {
     flickerTimerEnded = function() end
   },
   store = {
-    flicker = true,
-    time
+    flicker = true
   }
 }
 

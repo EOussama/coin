@@ -6,6 +6,7 @@
 
 ]]
 
+local UtilTimer = require("core.utils.timer")
 local UtilAudio = require("core.utils.audio")
 local UtilText = require("core.utils.text")
 local UtilColor = require("core.utils.color")
@@ -24,6 +25,9 @@ local game = {
   },
   events = {
     setActiveScene = function() end
+  },
+  store = {
+    flicker = true
   }
 }
 
@@ -44,6 +48,9 @@ function game.init(self, events)
 
   -- Initializing the player
   EntityPlayer:init()
+
+  -- Starting a timer for flickering
+  UtilTimer:start("flicker", 200, true, flickerTimerEnded)
 end
 
 
@@ -98,7 +105,11 @@ function game.draw(self)
 
   -- Printing the pausing state
   if global.paused == true then
-    UtilText.print("Game Paused", "right", "up", { r = 252, g = 186, b = 3, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+    love.graphics.setColor(0.252, 0.186, 0.03)
+
+    if self.store.flicker == true then
+      UtilText.print("Game Paused", "right", "up", { r = 252, g = 186, b = 3, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+    end
   end
 end
 
@@ -119,6 +130,18 @@ function game.collectCoin(self, index)
 
   -- Playing a complementory sound effect
   UtilAudio:play("effects", "coin")
+end
+
+
+
+
+--[[
+  @description Flicker timer event handler
+]]
+function flickerTimerEnded()
+
+  -- Toggling the flicker status
+  game.store.flicker = not game.store.flicker
 end
 
 
