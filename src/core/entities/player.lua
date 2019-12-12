@@ -98,6 +98,13 @@ end
 ]]
 function player.draw(self)
 
+  -- Checking if the game is paused
+  if global.paused == true then
+
+    -- Changing the overlay color when the game is paused
+    love.graphics.setColor(0.4, 0.4, 0.4)
+  end
+
   -- Drawing the player
   player.sprite:animate(self.x, self.y)
 end

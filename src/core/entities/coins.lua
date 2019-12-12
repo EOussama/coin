@@ -105,11 +105,17 @@ function coins.update(self, dt) end
   @param {Table} self: The table that invokes the function call
 ]]
 function coins.draw(self)
-  UtilColor.rgba(255, 213, 0, 255, true)
+
+  -- Checking if the game is paused
+  if global.paused == true then
+
+    -- Changing the overlay color when the game is paused
+    love.graphics.setColor(0.4, 0.4, 0.4)
+  end
+
   for i = 1, #self.coins, 1 do
     love.graphics.draw(global.assets.gfx.entities.coin, self.coins[i].x, self.coins[i].y, 0, self.scale, self.scale)
   end
-  UtilColor.restore()
 end
 
 
