@@ -38,7 +38,9 @@ function text.print(txt, x, y, color, font)
   love.graphics.print(txt, x, y)
 
   if font ~= nil and font.preserve == true then UtilFont.restore() end
-  -- if color ~= nil and color.preserve == true then UtilColor.restore() end
+  if color ~= nil and color.preserve == true then 
+    UtilColor.restore()
+   end
 end
 
 return text
