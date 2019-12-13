@@ -32,16 +32,21 @@ end
   @description Loads the GFX assets
   ]]
   function loader.loadGFX()
-    
+
     -- Defining the GFX directory
     local gfxDir = "/assets/gfx/"
-    
+
     -- Loading the ground asset
     global.assets.gfx.bg.ground = love.graphics.newImage(gfxDir .. "bg/ground.png")
-    
-    -- Loading the coin asset
-    global.assets.gfx.entities.coin = love.graphics.newImage(gfxDir .. "coin/coin.png")
-    
+
+    -- Loading the coins assets
+    global.assets.gfx.entities.coins = {
+      coin_1 = love.graphics.newImage(gfxDir .. "coins/coin_1.png"),
+      coin_2 = love.graphics.newImage(gfxDir .. "coins/coin_2.png"),
+      coin_3 = love.graphics.newImage(gfxDir .. "coins/coin_3.png"),
+      coin_5 = love.graphics.newImage(gfxDir .. "coins/coin_5.png")
+    }
+
     -- Loading the player assets
     global.assets.gfx.entities.player = {
       up = love.graphics.newImage(gfxDir .. "player/up.png"),
@@ -50,9 +55,9 @@ end
       left = love.graphics.newImage(gfxDir .. "player/left.png")
     }
   end
-  
-  
-  
+
+
+
 --[[
   @description Loads the SFX assets
 ]]

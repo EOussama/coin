@@ -24,7 +24,7 @@ function love.conf(t)
   t.window.title = "Cöin"
 
   -- Setting up the window's icon
-  t.window.icon = "assets/gfx/coin/coin.png"
+  t.window.icon = "assets/gfx/coins/coin.png"
 
   -- Setting up the starting display
   t.window.display = 1

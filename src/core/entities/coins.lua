@@ -25,8 +25,8 @@ function coins.init(self)
   math.randomseed(love.timer.getTime())
 
   -- Initializing the coins' dimentions
-  coins.width = global.assets.gfx.entities.coin:getWidth()
-  coins.height = global.assets.gfx.entities.coin:getHeight()
+  coins.width = global.assets.gfx.entities.coins['coin_1']:getWidth()
+  coins.height = global.assets.gfx.entities.coins['coin_1']:getHeight()
   coins.scale = 0.6
 
   -- Starting a coins timer
@@ -64,8 +64,8 @@ function coins.create(self, x, y)
 
   local width = love.graphics.getWidth()
   local height = love.graphics.getHeight()
-  local coinWidth = global.assets.gfx.entities.coin:getWidth()
-  local coinHeight = global.assets.gfx.entities.coin:getHeight()
+  local coinWidth = global.assets.gfx.entities.coins['coin_1']:getWidth()
+  local coinHeight = global.assets.gfx.entities.coins['coin_1']:getHeight()
 
   -- Sanitizing the input values
   if x == nil then x = coinWidth end
@@ -114,7 +114,7 @@ function coins.draw(self)
   end
 
   for i = 1, #self.coins, 1 do
-    love.graphics.draw(global.assets.gfx.entities.coin, self.coins[i].x, self.coins[i].y, 0, self.scale, self.scale)
+    love.graphics.draw(global.assets.gfx.entities.coins['coin_1'], self.coins[i].x, self.coins[i].y, 0, self.scale, self.scale)
   end
 end
 

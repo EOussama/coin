@@ -13,10 +13,8 @@ global = {
   },
   assets = {
     gfx = {
-      bg = {
-        ground = nil
-      },
-      entities = { coin = nil }
+      bg = { ground = nil },
+      entities = { coins = nil, player = nil }
     },
     sfx = {
       ambient = { music = nil },
