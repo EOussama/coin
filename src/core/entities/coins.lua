@@ -68,7 +68,8 @@ function coins.spawn()
   -- Checking if the game is not paused
   if global.paused == false then
 
-    local id = math.random(1, 4)
+    -- Calculating rariry
+    local rarity = math.random(1, 4)
 
     -- Calculating a random x position
     local x = math.random(love.graphics.getWidth(), 0)
@@ -77,7 +78,7 @@ function coins.spawn()
     local y = math.random(0, love.graphics.getHeight())
 
     -- Creating a coin
-    coins:create(x, y, id)
+    coins:create(x, y, rarity)
   end
 end
 
