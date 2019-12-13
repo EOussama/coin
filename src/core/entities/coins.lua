@@ -10,7 +10,29 @@ local UtilColor = require("core.utils.color")
 local UtilTimer = require("core.utils.timer")
 
 local coins = {
-  coins = {}
+  coins = {},
+  definition = {
+    {
+      rarity = 50,
+      value = 1,
+      name = 'coin_1'
+    },
+    {
+      rarity = 30,
+      value = 2,
+      name = 'coin_2'
+    },
+    {
+      rarity = 25,
+      value = 3,
+      name = 'coin_3'
+    },
+    {
+      rarity = 5,
+      value = 5,
+      name = 'coin_5'
+    },
+  }
 }
 
 
@@ -43,14 +65,16 @@ function coins.spawn()
   -- Checking if the game is not paused
   if global.paused == false then
 
+    local rarity = math.random(1, 100)
+
     -- Calculating a random x position
     local x = math.random(love.graphics.getWidth(), 0)
-  
+
     -- Calculating a random y position
     local y = math.random(0, love.graphics.getHeight())
-  
+
     -- Creating a coin
-    coins:create(x, y)
+    coins:create(x, y, rarity)
   end
 end
 
@@ -60,8 +84,9 @@ end
   @description Creates a new coin
   @param {Table} self: The table that invokes the function call
 ]]
-function coins.create(self, x, y)
+function coins.create(self, x, y, rarity)
 
+  local _rarity = rarity or self.rarity.rarity_1
   local width = love.graphics.getWidth()
   local height = love.graphics.getHeight()
   local coinWidth = global.assets.gfx.entities.coins['coin_1']:getWidth()
@@ -75,7 +100,7 @@ function coins.create(self, x, y)
   if y > height - coinHeight then y = height - coinHeight end
 
   -- Inserting the created coin into the coins collection
-  table.insert(self.coins, { x = x, y = y })
+  table.insert(self.coins, { x = x, y = y, rarity = _rarity })
 end
 
 
