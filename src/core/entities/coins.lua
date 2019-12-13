@@ -6,28 +6,31 @@
 
 ]]
 
-local UtilColor = require("core.utils.color")
 local UtilTimer = require("core.utils.timer")
 
 local coins = {
   coins = {},
-  definition = {
+  definitions = {
     {
+      id = 1,
       rarity = 50,
       value = 1,
       name = 'coin_1'
     },
     {
+      id = 2,
       rarity = 30,
       value = 2,
       name = 'coin_2'
     },
     {
+      id = 3,
       rarity = 25,
       value = 3,
       name = 'coin_3'
     },
     {
+      id = 4,
       rarity = 5,
       value = 5,
       name = 'coin_5'
@@ -65,7 +68,7 @@ function coins.spawn()
   -- Checking if the game is not paused
   if global.paused == false then
 
-    local rarity = math.random(1, 100)
+    local id = math.random(1, 4)
 
     -- Calculating a random x position
     local x = math.random(love.graphics.getWidth(), 0)
@@ -74,7 +77,7 @@ function coins.spawn()
     local y = math.random(0, love.graphics.getHeight())
 
     -- Creating a coin
-    coins:create(x, y, rarity)
+    coins:create(x, y, id)
   end
 end
 
@@ -84,9 +87,9 @@ end
   @description Creates a new coin
   @param {Table} self: The table that invokes the function call
 ]]
-function coins.create(self, x, y, rarity)
+function coins.create(self, x, y, id)
 
-  local _rarity = rarity or self.rarity.rarity_1
+  local _id = id or 1
   local width = love.graphics.getWidth()
   local height = love.graphics.getHeight()
   local coinWidth = global.assets.gfx.entities.coins['coin_1']:getWidth()
@@ -100,7 +103,7 @@ function coins.create(self, x, y, rarity)
   if y > height - coinHeight then y = height - coinHeight end
 
   -- Inserting the created coin into the coins collection
-  table.insert(self.coins, { x = x, y = y, rarity = _rarity })
+  table.insert(self.coins, { x = x, y = y, id = _id })
 end
 
 
@@ -139,7 +142,8 @@ function coins.draw(self)
   end
 
   for i = 1, #self.coins, 1 do
-    love.graphics.draw(global.assets.gfx.entities.coins['coin_1'], self.coins[i].x, self.coins[i].y, 0, self.scale, self.scale)
+    local coin = self.coins[i]
+    love.graphics.draw(global.assets.gfx.entities.coins[self.definitions[coin.id].name], coin.x, coin.y, 0, self.scale, self.scale)
   end
 end
 

@@ -52,7 +52,7 @@ function game.init(self, events)
 
   -- Starting a timer for flickering
   UtilTimer:start("flicker", 400, true, flickerTimerEnded)
-  
+
   -- Starting a timer for progress
   UtilTimer:start("time", 1000, true, timeTick)
 end
@@ -100,7 +100,7 @@ function game.draw(self)
 
   -- Printing the player's score
   UtilText.print("Score: " .. EntityPlayer.score, "left", "up", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
- 
+
   -- Printing the timer
   UtilText.print("Time: " .. game.store.time, "right", "up", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
 
@@ -126,14 +126,17 @@ end
 ]]
 function game:collectCoin(index)
 
-  -- Removing the collected coin
-  EntityCoin:remove(index)
+  -- Getting the value of the collected coin
+  local coinValue = EntityCoin.definitions[EntityCoin.coins[index].id].value
 
   -- Increasing the player' score
-  EntityPlayer.score = EntityPlayer.score + 1
+  EntityPlayer.score = EntityPlayer.score + coinValue
 
   -- Incrementing the time
-  game.store.time = game.store.time + 2
+  game.store.time = game.store.time + coinValue
+
+  -- Removing the collected coin
+  EntityCoin:remove(index)
 
   -- Playing a complementory sound effect
   UtilAudio:play("effects", "coin")
