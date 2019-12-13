@@ -132,6 +132,9 @@ function game:collectCoin(index)
   -- Increasing the player' score
   EntityPlayer.score = EntityPlayer.score + 1
 
+  -- Incrementing the time
+  game.store.time = game.store.time + 2
+
   -- Playing a complementory sound effect
   UtilAudio:play("effects", "coin")
 end
@@ -154,7 +157,11 @@ end
   @description Time tick event handler
 ]]
 function timeTick()
+
+  -- Checking if the play still has time
   if (game.store.time > 0) then
+
+    -- Decrementing the time
     game.store.time = game.store.time - 1
   end
 end
