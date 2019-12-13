@@ -27,7 +27,8 @@ local game = {
     setActiveScene = function() end
   },
   store = {
-    flicker = true
+    flicker = true,
+    time = 5
   }
 }
 
@@ -51,6 +52,9 @@ function game.init(self, events)
 
   -- Starting a timer for flickering
   UtilTimer:start("flicker", 400, true, flickerTimerEnded)
+  
+  -- Starting a timer for progress
+  UtilTimer:start("time", 1000, true, timeTick)
 end
 
 
@@ -87,7 +91,7 @@ function game.draw(self)
 
   -- Tiling the background
   UtilBackground.tile(global.assets.gfx.bg.ground, 0, 0, "cover")
-  
+
   -- Drawing the header
   -- UtilColor.rgba(61, 61, 61, 255, true)
   UtilColor.rgba(0, 0, 0, 80, true)
@@ -96,7 +100,10 @@ function game.draw(self)
 
   -- Printing the player's score
   UtilText.print("Score: " .. EntityPlayer.score, "left", "up", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
-  
+ 
+  -- Printing the timer
+  UtilText.print("Time: " .. game.store.time, "right", "up", { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+
   -- Drawing the coin
   EntityCoin:draw()
 
@@ -117,7 +124,7 @@ end
   @param {Table} self: The table that invokes the function call
   @param {Number} index: The index of the coin to collect
 ]]
-function game.collectCoin(self, index)
+function game:collectCoin(index)
 
   -- Removing the collected coin
   EntityCoin:remove(index)
@@ -139,6 +146,17 @@ function flickerTimerEnded()
 
   -- Toggling the flicker status
   game.store.flicker = not game.store.flicker
+end
+
+
+
+--[[
+  @description Time tick event handler
+]]
+function timeTick()
+  if (game.store.time > 0) then
+    game.store.time = game.store.time - 1
+  end
 end
 
 
