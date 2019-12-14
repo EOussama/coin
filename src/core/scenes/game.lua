@@ -51,7 +51,7 @@ function game.init(self, events)
   EntityPlayer:init()
 
   -- Starting a timer for flickering
-  UtilTimer:start("flicker", 400, true, flickerTimerEnded)
+  UtilTimer:start("game_flicker", 400, true, flickerTimerEnded)
 
   -- Starting a timer for progress
   UtilTimer:start("time", 1000, true, timeTick)
@@ -162,7 +162,7 @@ end
 function timeTick()
 
   -- Checking if the play still has time
-  if (game.store.time > 0) then
+  if (game.store.time > 0 and global.paused == false) then
 
     -- Decrementing the time
     game.store.time = game.store.time - 1

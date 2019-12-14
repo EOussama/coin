@@ -41,9 +41,9 @@ function title.init(self, events)
 
   -- Playing ambient music
   UtilAudio:play("ambient", "music", 0.2, true)
-  
+
   -- Starting a timer for flickering
-  UtilTimer:start("flicker", 200, true, flickerTimerEnded)
+  UtilTimer:start("title_flicker", 200, true, flickerTimerEnded)
 end
 
 
