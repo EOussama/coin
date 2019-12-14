@@ -12,9 +12,9 @@ local rarity = {}
 
 --[[
   @description Calculates the rarity given a specific input
-  @param {Table<Number>} rarity: The rarity table
+  @param {Table<Number>} rarityValues: The rarity table
 ]]
-function rarity.calculate(rarity)
+function rarity.calculate(rarityValues)
 
   -- Initializing the rarity table
   local rarityTable = {}
@@ -23,19 +23,19 @@ function rarity.calculate(rarity)
   local generatedNumbers = {}
 
   -- Sorting the rarity values
-  table.sort(rarity)
+  table.sort(rarityValues)
 
-  for i = 1, #rarity do
+  for i = 1, #rarityValues do
     local j = 1
     local rarityLevel = {
-      rarity = rarity[i],
+      rarity = rarityValues[i],
       values = {}
     }
 
     while j <= rarityLevel.rarity do
       local rand = math.random(1, 100)
 
-      if true then
+      if rarity.contains(generatedNumbers, rand) == false then
         table.insert(generatedNumbers, rand)
         rarityLevel.values[j] = rand
         j = j + 1
@@ -49,9 +49,26 @@ function rarity.calculate(rarity)
   for i = 1, #rarityTable do
     print(rarityTable[i].rarity, table.concat(rarityTable[i].values, ' - '))
   end
-  print('Count: ', #generatedNumbers)
 
   return rarityTable
+end
+
+
+
+--[[
+  @description Checks if a rarity table contain a value
+  @param {Table<Number>} table: The rarity table
+  @param {Number} val: The number to check
+]]
+function rarity.contains(table, val)
+
+  for i = 1, #table do
+    if table[i] == val then
+      return true
+    end
+  end
+
+  return false
 end
 
 
