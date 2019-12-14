@@ -19,6 +19,9 @@ function rarity.calculate(rarity)
   -- Initializing the rarity table
   local rarityTable = {}
 
+  -- Initializing the history object for the generated numbers
+  local generatedNumbers = {}
+
   -- Sorting the rarity values
   table.sort(rarity)
 
@@ -30,8 +33,13 @@ function rarity.calculate(rarity)
     }
 
     while j <= rarityLevel.rarity do
-        rarityLevel.values[j] = math.random(1, 100)
+      local rand = math.random(1, 100)
+
+      if true then
+        table.insert(generatedNumbers, rand)
+        rarityLevel.values[j] = rand
         j = j + 1
+      end
     end
 
     table.insert(rarityTable, rarityLevel)
@@ -41,6 +49,7 @@ function rarity.calculate(rarity)
   for i = 1, #rarityTable do
     print(rarityTable[i].rarity, table.concat(rarityTable[i].values, ' - '))
   end
+  print('Count: ', #generatedNumbers)
 
   return rarityTable
 end

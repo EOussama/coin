@@ -26,7 +26,7 @@ local coins = {
     },
     {
       id = 3,
-      rarity = 25,
+      rarity = 15,
       value = 3,
       name = 'coin_3'
     },
