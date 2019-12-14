@@ -7,6 +7,7 @@
 ]]
 
 local UtilTimer = require("core.utils.timer")
+local UtilRarity = require("core.utils.rarity")
 
 local coins = {
   coins = {},
@@ -70,6 +71,8 @@ function coins.spawn()
 
     -- Calculating rariry
     local rarity = math.random(1, 4)
+    local x = { coins.definitions[1].rarity, coins.definitions[2].rarity, coins.definitions[3].rarity, coins.definitions[4].rarity }
+    UtilRarity.calculate(x)
 
     -- Calculating a random x position
     local x = math.random(love.graphics.getWidth(), 0)
