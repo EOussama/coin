@@ -69,10 +69,11 @@ function coins.spawn()
   -- Checking if the game is not paused
   if global.paused == false then
 
-    -- Calculating rariry
-    local rarity = math.random(1, 4)
-    local x = { coins.definitions[1].rarity, coins.definitions[2].rarity, coins.definitions[3].rarity, coins.definitions[4].rarity }
-    UtilRarity.calculate(x)
+    -- Calculating the rarity
+    local input = math.random(1, 100)
+
+    -- Getting the coin ID
+    local coinId = UtilRarity.calculate(input, { { id = 1, rarity = coins.definitions[1].rarity }, { id = 2, rarity = coins.definitions[2].rarity }, { id = 3, rarity = coins.definitions[3].rarity }, { id = 4, rarity = coins.definitions[4].rarity } })
 
     -- Calculating a random x position
     local x = math.random(love.graphics.getWidth(), 0)
@@ -81,7 +82,7 @@ function coins.spawn()
     local y = math.random(0, love.graphics.getHeight())
 
     -- Creating a coin
-    coins:create(x, y, rarity)
+    coins:create(x, y, coinId)
   end
 end
 

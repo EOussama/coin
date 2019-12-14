@@ -11,10 +11,37 @@ local rarity = {}
 
 
 --[[
-  @description Calculates the rarity given a specific input
+  @description Calculates the rarity of an input
+  @param {Number} rarityInput: The rarity input
   @param {Table<Number>} rarityValues: The rarity table
 ]]
-function rarity.calculate(rarityValues)
+function rarity.calculate(rarityInput, rarityValues)
+
+  -- Generating a rarity table
+  local rarityTable = rarity.generate(rarityValues)
+
+  -- Initializing the rarity output bearer
+  local output = nil
+
+  for i = 1, #rarityTable do
+    for j = 1, #rarityTable[i].values do
+      if rarityTable[i].values[j] == rarityInput then
+        output = rarityTable[i].id
+        break
+      end
+    end
+  end
+
+  return output
+end
+
+
+
+--[[
+  @description Generate a rarity table
+  @param {Table<Number>} rarityValues: The rarity table
+]]
+function rarity.generate(rarityValues)
 
   -- Initializing the rarity table
   local rarityTable = {}
@@ -22,13 +49,11 @@ function rarity.calculate(rarityValues)
   -- Initializing the history object for the generated numbers
   local generatedNumbers = {}
 
-  -- Sorting the rarity values
-  table.sort(rarityValues)
-
   for i = 1, #rarityValues do
     local j = 1
     local rarityLevel = {
-      rarity = rarityValues[i],
+      id = rarityValues[i].id,
+      rarity = rarityValues[i].rarity,
       values = {}
     }
 
@@ -43,11 +68,6 @@ function rarity.calculate(rarityValues)
     end
 
     table.insert(rarityTable, rarityLevel)
-  end
-
-  print('\n-----\n')
-  for i = 1, #rarityTable do
-    print(rarityTable[i].rarity, table.concat(rarityTable[i].values, ' - '))
   end
 
   return rarityTable
