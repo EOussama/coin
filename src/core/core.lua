@@ -10,10 +10,6 @@ local UtilLoader = require("core.utils.loader")
 local UtilScene = require("core.utils.scene")
 local UtilTimer = require("core.utils.timer")
 
-local SceneTitle = require("core.scenes.title")
-local SceneGame = require("core.scenes.game")
-local SceneGame = require("core.scenes.game")
-
 local core = {}
 
 
@@ -68,6 +64,16 @@ function love.keypressed(key)
 
     -- Toggeling the game's pause status
     global.paused = not global.paused
+  end
+
+  -- Checking if the 'space' key was pressed
+  if key == 'space' and global.over == true then
+
+    -- Marking the game as not over
+    global.over = false
+
+    -- Starting the game
+    UtilScene.setActiveScene(1)
   end
 end
 

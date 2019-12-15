@@ -29,6 +29,12 @@ local player = {
 function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
+  self.score = 0
+  self.velocity = 1
+  self.direction = "down"
+  self.width = 50
+  self.height = 50
+  self.sprite = nil
 
   player.sprite = UtilAnimation:create(global.assets.gfx.entities.player.down, 0, 0, 128, 128, 4, 150, 0.5)
 end
@@ -51,10 +57,10 @@ function player.update(self, dt)
 
       player.sprite:update(dt)
       player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
-      
+
       if self.y < global.ui.header.height then self.y = global.ui.header.height end
     end
-    
+
     -- Checking if the 'right' key is pressed
     if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
       self.x = self.x + self.velocity
@@ -62,7 +68,7 @@ function player.update(self, dt)
 
       player.sprite:update(dt)
       player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
-      
+
       if self.x > love.graphics.getWidth() then self.x = love.graphics.getWidth() end
     end
 
@@ -73,7 +79,7 @@ function player.update(self, dt)
 
       player.sprite:update(dt)
       player.sprite.spriteSheet = global.assets.gfx.entities.player[self.direction]
-      
+
       if self.y > love.graphics.getHeight() then self.y = love.graphics.getHeight() end
     end
 

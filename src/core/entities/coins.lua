@@ -51,9 +51,10 @@ function coins.init(self)
   math.randomseed(love.timer.getTime())
 
   -- Initializing the coins' dimentions
-  coins.width = global.assets.gfx.entities.coins['coin_1']:getWidth()
-  coins.height = global.assets.gfx.entities.coins['coin_1']:getHeight()
-  coins.scale = 0.6
+  self.width = global.assets.gfx.entities.coins['coin_1']:getWidth()
+  self.height = global.assets.gfx.entities.coins['coin_1']:getHeight()
+  self.scale = 0.6
+  self.coins = {}
 
   -- Starting a coins timer
   UtilTimer:start("timer" .. love.timer.getTime(), 1000, true, self.spawn)

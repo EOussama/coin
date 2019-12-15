@@ -40,9 +40,12 @@ local game = {
   @param {Table} events: The recieved events table
 ]]
 function game.init(self, events)
-
+  
   -- Invoking the event handlers
   self.setActiveScene = events.setActiveScene
+
+  -- Reseting the time
+  self.store.time = 5
 
   -- Creating a coin
   EntityCoin:init()

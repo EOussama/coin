@@ -7,7 +7,6 @@
 ]]
 
 local UtilText = require("core.utils.text")
-local UtilAudio = require("core.utils.audio")
 local UtilBackground = require("core.utils.background")
 
 local over = {
@@ -36,6 +35,9 @@ local over = {
 ]]
 function over.init(self, events, params)
 
+  -- Marking the game as over
+  global.over = true
+
   -- Recieving the event handlers
   self.setActiveScene = events.setActiveScene
 
@@ -50,8 +52,7 @@ end
   @param {Table} self: The table that invokes the function call
   @param {Number} dt: Delta time
 ]]
-function over.update(self, dt)
-end
+function over.update(self, dt) end
 
 
 

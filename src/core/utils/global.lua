@@ -7,6 +7,7 @@
 ]]
 
 global = {
+  over = false,
   paused = false,
   ui = {
     header = { height = 60 }
