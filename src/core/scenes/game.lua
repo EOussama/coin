@@ -153,10 +153,10 @@ end
 function game:leave()
 
   -- Stopping the active timers
+  EntityCoin:resetTimer()
   UtilTimer:finish("game_flicker")
   UtilTimer:finish("game_time")
 end
-
 
 
 

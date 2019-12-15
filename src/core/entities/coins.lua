@@ -57,7 +57,7 @@ function coins.init(self)
   self.coins = {}
 
   -- Starting a coins timer
-  UtilTimer:start("timer" .. love.timer.getTime(), 1000, true, self.spawn)
+  UtilTimer:start("coins_timer", 1000, true, self.spawn)
 end
 
 
@@ -151,6 +151,17 @@ function coins.draw(self)
     local coin = self.coins[i]
     love.graphics.draw(global.assets.gfx.entities.coins[self.definitions[coin.id].name], coin.x, coin.y, 0, self.scale, self.scale)
   end
+end
+
+
+
+--[[
+  @description Resets the coins' timer
+]]
+function coins:resetTimer()
+
+  -- Stopping the active timers
+  UtilTimer:finish("coins_timer")
 end
 
 
