@@ -16,8 +16,6 @@ local UtilCollision = require("core.utils.collision")
 local EntityPlayer = require("core.entities.player")
 local EntityCoin = require("core.entities.coins")
 
-local SceneTitle = require('core.scenes.title')
-
 local game = {
   meta = {
     id = 1,
@@ -172,7 +170,7 @@ function timeTick()
 
   -- Checking if the player is out of time
   if (game.store.time == 0) then
-    game.setActiveScene(SceneTitle.meta.id)
+    game.setActiveScene(2)
   end
 end
 

@@ -8,13 +8,15 @@
 
 local SceneTitle = require("core.scenes.title")
 local SceneGame = require("core.scenes.game")
+local SceneOver = require("core.scenes.over")
 
 local scenes = {}
 
 function scenes.init()
   scenes.register(SceneTitle, true)
   scenes.register(SceneGame)
-  
+  scenes.register(SceneOver)
+
   scenes.setActiveScene()
 end
 
