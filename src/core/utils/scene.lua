@@ -22,7 +22,7 @@ end
 
 function scenes.update(self, dt)
   local activeScene = scenes.getActiveScene()
-  
+
   if activeScene ~= nil then
     activeScene:update(dt)
   end
@@ -44,12 +44,12 @@ function scenes.register(scene, default)
   end
 end
 
-function scenes.setActiveScene(sceneId)
+function scenes.setActiveScene(sceneId, params)
   if sceneId == nil then
     local defScene = scenes.getDefaultScene()
 
     if defScene ~= nil then
-      defScene:init({ setActiveScene = scenes.setActiveScene })
+      defScene:init({ setActiveScene = scenes.setActiveScene }, params or {})
       defScene.meta.active = true
     end
   else
@@ -57,7 +57,7 @@ function scenes.setActiveScene(sceneId)
       local tmpScene = scenes[i]
 
       if sceneId == tmpScene.meta.id then
-        tmpScene:init({ setActiveScene = scenes.setActiveScene })
+        tmpScene:init({ setActiveScene = scenes.setActiveScene }, params or {})
         tmpScene.meta.active = true
       else
         tmpScene.meta.active = false

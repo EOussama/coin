@@ -21,7 +21,8 @@ local over = {
     setActiveScene = function() end
   },
   store = {
-    flicker = true
+    flicker = true,
+    score = 0
   }
 }
 
@@ -31,11 +32,15 @@ local over = {
   @description Over scene initialization
   @param {Table} self: The table that invokes the function call
   @param {Table} events: A table that holds outer event handlers
+  @param {Table} params: A table that holds the passed parameters
 ]]
-function over.init(self, events)
+function over.init(self, events, params)
 
   -- Recieving the event handlers
   self.setActiveScene = events.setActiveScene
+
+  -- Assinging the score
+  self.store.score = params.score
 end
 
 
@@ -63,7 +68,7 @@ function over.draw(self)
   UtilText.print("Game Over", "center", 170, { r = 252, g = 10, b = 10, a = 255, preserve = true }, { fnt = global.assets.fonts.huge, preserve = true })
 
   -- Printing the score message on the screen
-  UtilText.print("You scored " .. 100, "center", 320, { r = 252, g = 109, b = 25, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
+  UtilText.print("You scored " .. self.store.score, "center", 320, { r = 252, g = 109, b = 25, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })
 
   -- Printing the starting message on the screen
   UtilText.print("Press SPACE to start!", "center", 380, { r = 255, g = 255, b = 255, a = 255 }, { fnt = global.assets.fonts.large, preserve = true })

@@ -170,7 +170,7 @@ function timeTick()
 
   -- Checking if the player is out of time
   if (game.store.time == 0) then
-    game.setActiveScene(2)
+    game.setActiveScene(2, { score = EntityPlayer.score })
   end
 end
 
