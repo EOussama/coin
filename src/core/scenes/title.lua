@@ -11,6 +11,8 @@ local UtilAudio = require("core.utils.audio")
 local UtilTimer = require("core.utils.timer")
 local UtilBackground = require("core.utils.background")
 
+local SceneGame = require('core.scenes.game')
+
 local title = {
   meta = {
     id = 0,
@@ -56,10 +58,10 @@ end
 function title.update(self, dt)
 
   -- Checking of the 'space' key was pressed
-  if love.keyboard.isDown('space') and title.meta.active == true then
+  if love.keyboard.isDown('space') and self.meta.active == true then
 
     -- Navigating to the 'game' scene
-    title.setActiveScene(1)
+    self.setActiveScene(SceneGame.meta.id)
   end
 end
 
