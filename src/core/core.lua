@@ -75,6 +75,21 @@ function love.keypressed(key)
     -- Starting the game
     UtilScene.setActiveScene(1)
   end
+
+  -- Checking if the 'escape' key was pressed
+  if key == 'escape' then
+
+    -- Checking if the game is being played
+    if UtilScene.getActiveScene().meta.id ~= 0 then
+
+      -- Displaying the game's screen
+      UtilScene.setActiveScene(0)
+    else
+
+      -- Exiting the game
+      love.event.quit()
+    end
+  end
 end
 
 

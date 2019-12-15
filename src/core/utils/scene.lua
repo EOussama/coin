@@ -45,6 +45,7 @@ function scenes.register(scene, default)
 end
 
 function scenes.setActiveScene(sceneId, params)
+
   if sceneId == nil then
     local defScene = scenes.getDefaultScene()
 

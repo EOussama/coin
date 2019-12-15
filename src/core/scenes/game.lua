@@ -177,14 +177,14 @@ end
 function timeTick()
 
   -- Checking if the play still has time
-  if (game.store.time > 0 and global.paused == false) then
+  if (game.store.time > 0 and global.paused == false and global.over == false) then
 
     -- Decrementing the time
     game.store.time = game.store.time - 1
   end
 
   -- Checking if the player is out of time
-  if (game.store.time == 0) then
+  if (game.store.time == 0 and global.paused == false and global.over == false and game.meta.active == true) then
     game.setActiveScene(2, { score = EntityPlayer.score })
   end
 end

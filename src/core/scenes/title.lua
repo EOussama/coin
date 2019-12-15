@@ -36,6 +36,10 @@ local title = {
 ]]
 function title.init(self, events)
 
+  -- Resets the game' state
+  global.over = false
+  global.paused = false
+
   -- Recieving the event handlers
   self.setActiveScene = events.setActiveScene
 
