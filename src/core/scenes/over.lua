@@ -77,4 +77,11 @@ end
 
 
 
+--[[
+  @description Called when the scene is navigated away from
+]]
+function over:leave() end
+
+
+
 return over

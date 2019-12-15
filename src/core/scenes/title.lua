@@ -88,6 +88,17 @@ end
 
 
 --[[
+  @description Called when the scene is navigated away from
+]]
+function title:leave()
+
+  -- Stopping the active timers
+  UtilTimer:finish("title_flicker")
+end
+
+
+
+--[[
   @description Flicker timer event handler
 ]]
 function flickerTimerEnded()

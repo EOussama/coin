@@ -57,7 +57,7 @@ function game.init(self, events)
   UtilTimer:start("game_flicker", 400, true, flickerTimerEnded)
 
   -- Starting a timer for progress
-  UtilTimer:start("time", 1000, true, timeTick)
+  UtilTimer:start("game_time", 1000, true, timeTick)
 end
 
 
@@ -143,6 +143,18 @@ function game:collectCoin(index)
 
   -- Playing a complementory sound effect
   UtilAudio:play("effects", "coin")
+end
+
+
+
+--[[
+  @description Called when the scene is navigated away from
+]]
+function game:leave()
+
+  -- Stopping the active timers
+  UtilTimer:finish("game_flicker")
+  UtilTimer:finish("game_time")
 end
 
 

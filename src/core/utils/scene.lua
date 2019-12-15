@@ -60,6 +60,10 @@ function scenes.setActiveScene(sceneId, params)
         tmpScene:init({ setActiveScene = scenes.setActiveScene }, params or {})
         tmpScene.meta.active = true
       else
+        if tmpScene.meta.active == true then
+          tmpScene:leave()
+        end
+
         tmpScene.meta.active = false
       end
     end

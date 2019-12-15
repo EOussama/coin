@@ -85,8 +85,11 @@ end
   @description Stops/finishes a timer
   @param {Table} self: The table that invokes the function call
   @param {String} name: The name of the timer to finish
+  @param {Boolean} executeCallback: Whether or not to execute the callback
 ]]
-function timers.finish(self, name)
+function timers.finish(self, name, executeCallback)
+
+  local extClbck = executeCallback or false
 
   -- Looping through all available timers
   for i = 1, #self, 1 do
@@ -104,7 +107,9 @@ function timers.finish(self, name)
       timer.finished = true
 
       -- Calling the finishing callback
-      timer.callback()
+      if extClbck == true then
+        timer.callback()
+      end
 
       -- Brealking out of jail
       break
@@ -137,7 +142,7 @@ function timers.update(self, dt)
       if timer.tick >= timer.time then
 
         -- Finishing the timer
-        self:finish(timer.name)
+        self:finish(timer.name, true)
         
         -- Checking if the timer is set on an active loop
         if timer.loop == true then
