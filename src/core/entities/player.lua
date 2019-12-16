@@ -13,7 +13,7 @@ local player = {
   x = 0,
   y = 100,
   score = 0,
-  velocity = 1,
+  velocity = 500,
   direction = "down",
   width = 50,
   height = 50,
@@ -30,7 +30,7 @@ function player.init(self)
   self.x = love.graphics.getWidth() / 2 - 25
   self.y = love.graphics.getHeight() / 2 - 25
   self.score = 0
-  self.velocity = 1
+  self.velocity = 200
   self.direction = "down"
   self.width = 50
   self.height = 50
@@ -52,7 +52,7 @@ function player.update(self, dt)
 
     -- Checking if the 'up' key is pressed
     if love.keyboard.isDown("up") and self.y > global.ui.header.height then
-      self.y = self.y - self.velocity
+      self.y = self.y - self.velocity*dt
       self.direction = "up"
 
       player.sprite:update(dt)
@@ -63,7 +63,7 @@ function player.update(self, dt)
 
     -- Checking if the 'right' key is pressed
     if love.keyboard.isDown("right") and self.x < love.graphics.getWidth() - self.width then
-      self.x = self.x + self.velocity
+      self.x = self.x + self.velocity*dt
       self.direction = "right"
 
       player.sprite:update(dt)
@@ -74,7 +74,7 @@ function player.update(self, dt)
 
     -- Checking if the 'down' key is pressed
     if love.keyboard.isDown("down") and self.y < love.graphics.getHeight() - self.height then
-      self.y = self.y + self.velocity
+      self.y = self.y + self.velocity*dt
       self.direction = "down"
 
       player.sprite:update(dt)
@@ -85,7 +85,7 @@ function player.update(self, dt)
 
     -- Checking if the 'left' key is pressed
     if love.keyboard.isDown("left") and self.x > 0 then
-      self.x = self.x - self.velocity
+      self.x = self.x - self.velocity*dt
       self.direction = "left"
 
       player.sprite:update(dt)
