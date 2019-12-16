@@ -9,16 +9,7 @@
 local UtilColor = require("core.utils.color")
 local UtilAnimation = require("core.utils.animation")
 
-local player = {
-  x = 0,
-  y = 100,
-  score = 0,
-  velocity = 500,
-  direction = "down",
-  width = 50,
-  height = 50,
-  sprite = nil
-}
+local player = {}
 
 
 
